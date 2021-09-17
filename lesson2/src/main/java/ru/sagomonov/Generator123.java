@@ -8,6 +8,9 @@ public class Generator123 implements Supplier<Integer> {
     final int n;
     final Random random = new SecureRandom();
 
+    public Generator123() {
+        this(3);
+    }
     /**
      *
      * @param n - максимальное число спичек, которые можно взять за 1 ход
