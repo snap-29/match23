@@ -8,7 +8,10 @@ import java.util.function.Supplier;
 public class Matches23 {
 
     public static void main(String[] args) {
-        Supplier<Integer> gen123 = new Generator123(3);
+
+
+
+        IStrategy bot = new BotStrategy();
         int nMatches = 23;
         Scanner scanner = new Scanner(System.in);
         int nGamer;
@@ -27,18 +30,11 @@ public class Matches23 {
             isPlayer = !isPlayer;
             nMatches -= nGamer;
 
-            if (nMatches > 1) {
+            if ( bot.test(nMatches)) {
                 System.out.println("It's " + nMatches + " on a table");
 
 
-                int nBot;
-                if (nMatches <= 4) {
-                    nBot = nMatches - 1;
-                } else {
-                    nBot = nMatches % 5;
-                    if (nBot == 0 || nBot > 3)
-                        nBot = gen123.get();
-                }
+                int nBot = bot.apply(nMatches);
                 System.out.println("I took " + nBot);
                 nMatches -= nBot;
                 System.out.println("It's " + nMatches + " on a table");
